@@ -4,7 +4,36 @@ A visual topic map of documents.
 
 ## Example
 
-TODO
+Given this [document and topics list from the Gettysberg address](docs/gettysberg.json ":ignore"):
+
+```json
+{
+  "docs": [
+    "Four score and seven years ago ...",
+    "Now we are engaged in a great civil war ...",
+    "We are met on a great battle-field of that war."
+    // ...
+  ],
+  "topics": [
+    { "name": "Ideals", "text": "The Founding Ideals of America" },
+    { "name": "Purpose", "text": "The Gravity and Purpose of the Civil War" },
+    { "name": "Honor", "text": "Respect and Remembrance for the Fallen" },
+    { "name": "Responsibility", "text": "The Responsibility of the Living" }
+  ],
+  "docTopicMap": [
+    [0, 0],
+    [1, 1],
+    [2, 1]
+    // ...
+  ]
+}
+```
+
+... we can render the following documap:
+
+[![Gettysberg documap](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg.html ":include")
+
+[Here is the source code for the network above](docs/gettysberg.html ":include :type=code")
 
 ## Installation
 

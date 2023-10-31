@@ -5,7 +5,7 @@
   "module": "dist/documap.js",
   "browser": "dist/documap.min.js",
   "scripts": {
-    "lint": "prettier --write '**/*.{js,mjs,ts,md}' && eslint",
+    "lint": "prettier --write '**/*.{js,mjs,ts,md,json}' && eslint",
     "watch": "esbuild documap.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist --watch",
     "build-browser": "esbuild documap.js --format=iife --global-name=gramex --bundle --minify --allow-overwrite --sourcemap --outdir=dist",
     "build-esm": "esbuild documap.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist",
