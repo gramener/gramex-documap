@@ -44,6 +44,15 @@ export function documap(
     .attr("height", docHeight)
     .attr("data-documap-doc", (d, i) => i);
 
+  let markerLayer = layer(docLayer, markerTag, markerClass, []);
+  const chart = {
+    doc: docLayer,
+    topic: topicLayer,
+    marker: markerLayer,
+    docs: docsLayer,
+    topics: topicsLayer,
+  };
+
   topicLayer.on("click.update", function (event, topic) {
     this.classList.toggle(topicActiveClass);
     const activeTopics = topicsLayer
@@ -53,7 +62,7 @@ export function documap(
     const markerData = docs.map((doc, docId) =>
       docTopicMap.filter(([dId, tId]) => dId === docId && activeTopics.includes(tId)),
     );
-    const markersLayer = layer(docLayer, markerTag, markerClass, (d, i) => markerData[i])
+    chart.markers = markerLayer = layer(docLayer, markerTag, markerClass, (d, i) => markerData[i])
       .attr("data-documap-topic", (d) => d.topicId)
       .attr("r", markerSize)
       .attr("transform", (d, i, nodes) => {
@@ -73,16 +82,11 @@ export function documap(
           topic,
           topicId: +this.dataset.documapTopic,
           activeTopics: activeTopics,
-          markers: markersLayer,
+          markers: markerLayer,
         },
       }),
     );
   });
 
-  return {
-    doc: docLayer,
-    topic: topicLayer,
-    docs: docsLayer,
-    topics: topicsLayer,
-  };
+  return chart;
 }

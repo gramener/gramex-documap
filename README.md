@@ -24,7 +24,7 @@ Given this [document and topics list from the Gettysberg address](docs/gettysber
     [0, 0],
     [1, 1],
     [2, 1]
-    // ...
+    // ... list of [document id, topic id] mappings
   ]
 }
 ```
@@ -144,6 +144,9 @@ When a topic is clicked, it adds marker elements to matching documents.
 - `markerStyle: (marker) => marker.style(...)` ensures that `documap()` colors the `marker` D3 join when it is dynamically rendered
 - `chart.topic.style(...)` colors the topics
 
+Note: You can't style the markers using the `chart.marker` D3 join because it is empty when the chart is initialized, and is updated dynamically. So we pass a `markerStyle` function instead.
+You can use [events](#events) as another way of styling markers.
+
 [![Gettysberg documap styled markers](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-marker.png)](docs/gettysberg-marker.html ":include height=120")
 
 [See how to style markers](docs/gettysberg-marker.html ":include :type=code")
@@ -174,6 +177,17 @@ You can use [Bootstrap tooltips](https://getbootstrap.com/docs/5.3/components/to
 
 [See how to add tooltips](docs/gettysberg-tooltip.html ":include :type=code")
 
+## Add modals
+
+You can use [Bootstrap modals](https://getbootstrap.com/docs/5.3/components/modal/).
+
+1. Create a new `new bootstrap.Modal(document.querySelector("..."));`
+2. Use `chart.doc.on()` or `chart.topic.on()` or `chart.marker.on()` to listen to `click` events and update the modal content.
+
+[![Gettysberg documap with modals](https://code.gramener.com/cto/gramex-network/-/raw/main/docs/gettysberg-modal.png)](docs/gettysberg-modal.html ":include height=400")
+
+[See how to add modals](docs/gettysberg-modal.html ":include :type=code")
+
 ## Bring your own D3
 
 If you already have D3 loaded, or want to use a specific version / instance of D3, pass it to `documap(el, { d3 })`:
@@ -181,6 +195,8 @@ If you already have D3 loaded, or want to use a specific version / instance of D
 [![Gettysberg documap with pinned D3 version](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-d3.png)](docs/gettysberg-d3.html ":include height=120")
 
 [See how to use your own D3 version](docs/gettysberg-d3.html ":include :type=code")
+
+## React usage
 
 ## API
 
@@ -213,6 +229,7 @@ It returns an object with the following properties:
 
 - `docs`: {Selection} - D3 join of the documents container (single node)
 - `topics`: {Selection} - D3 join of the topics container (single node)
+- `marker`: {Selection} - D3 join of the markers displayed (if any topics are active)
 - `doc`: {Selection} - D3 join of the documents (as many nodes as `docs`)
 - `topic`: {Selection} - D3 join of the topics (as many nodes as `topics`)
 
