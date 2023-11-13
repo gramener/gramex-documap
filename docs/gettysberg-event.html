@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="gettysberg.css" />
+<pre id="data"></pre>
 <div id="documap"></div>
 
 <script type="module">
@@ -14,4 +15,8 @@
     docWidth: (d) => d.length,
     topicLabel: (d) => d.name,
   });
+  document.querySelector("#documap").addEventListener("update", (e) => {
+    e.target.style.fontStyle = 'italic';
+    document.querySelector("#data").textContent = `Last clicked: ${e.detail.topic.name}`;
+  })
 </script>

@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="gettysberg.css" />
+<div id="documap"></div>
+
+<script type="module">
+  import { documap } from "../dist/documap.js";
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+  // Load the data
+  const data = await fetch("gettysberg.json").then((r) => r.json());
+  // Add a .count property to each topic to indicate how many documents it matches
+  data.topics.forEach((topic, i) => topic.count = data.docTopicMap.filter(([, id]) => id === i).length);
+  // Render the documap
+  const chart = documap(d3.select("#documap"), {
+    ...data,
+    docWidth: (d) => d.length,
+    topicLabel: (d) => d.name,
+  });
+  // Create a color scale where shortest documents are white and longest are red
+  const color = d3.scaleSequential()
+    .domain(d3.extent(data.docs, d => d.length))
+    .interpolator(d3.interpolateReds);
+  // Style the documents. Use color (instead of width) to indicate document length
+  chart.doc.attr("width", 100)
+    .style("background-color", doc => color(doc.length));
+  // Style the topics. Highlight topics with 3+ matches
+  chart.topic
+    .text(topic => `${topic.name} (${topic.count})`)
+    .style("background-color", topic => topic.count >= 3 ? "salmon" : "white");
+</script>

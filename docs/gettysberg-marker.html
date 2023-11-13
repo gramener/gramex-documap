@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="gettysberg.css" />
+<div id="documap"></div>
+
+<script type="module">
+  import { documap } from "../dist/documap.js";
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+  // Load the data
+  const data = await fetch("gettysberg.json").then((r) => r.json());
+  // Create a color scheme
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  // Render the documap
+  const chart = documap(d3.select("#documap"), {
+    ...data,
+    docWidth: (d) => d.length,
+    topicLabel: (d) => d.name,
+    toggleStyle: (toggle) => toggle.style("fill", ([, topicId]) => color(topicId)),
+  });
+  // Style the topics. Highlight topics with 3+ matches
+  chart.topic
+    .style("background-color", (topic, topicId) => color(topicId));
+</script>

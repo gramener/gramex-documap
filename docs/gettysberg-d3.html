@@ -2,16 +2,16 @@
 <div id="documap"></div>
 
 <script type="module">
-  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
   import { documap } from "../dist/documap.js";
+  // Use our own version of D3
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.8.5/+esm";
   // Load the data
-  const { docs, topics, docTopicMap } = await fetch("gettysberg.json").then((r) => r.json());
+  const data = await fetch("gettysberg.json").then((r) => r.json());
   // Render the documap
-  documap(d3.select("#documap"), {
-    docs,
-    topics,
-    docTopicMap,
+  documap("#documap", {
+    ...data,
     docWidth: (d) => d.length,
     topicLabel: (d) => d.name,
+    d3,
   });
 </script>
