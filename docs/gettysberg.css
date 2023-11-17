@@ -1,3 +1,7 @@
+#documap {
+  padding: 0.01rem 0;
+}
+
 /* All topics are contained in a .documap-topics */
 .documap-topics {
   margin: 1rem 0;

@@ -62,7 +62,7 @@ export function documap(
     const markerData = docs.map((doc, docId) =>
       docTopicMap.filter(([dId, tId]) => dId === docId && activeTopics.includes(tId)),
     );
-    chart.markers = markerLayer = layer(docLayer, markerTag, markerClass, (d, i) => markerData[i])
+    chart.marker = markerLayer = layer(docLayer, markerTag, markerClass, (d, i) => markerData[i])
       .attr("data-documap-topic", (d) => d.topicId)
       .attr("r", markerSize)
       .attr("transform", (d, i, nodes) => {
@@ -82,7 +82,7 @@ export function documap(
           topic,
           topicId: +this.dataset.documapTopic,
           activeTopics: activeTopics,
-          markers: markerLayer,
+          marker: markerLayer,
         },
       }),
     );

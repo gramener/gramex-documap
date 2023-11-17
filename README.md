@@ -79,6 +79,22 @@ Use via CDN as a script:
 </script>
 ```
 
+This library uses [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) - an ES2020 feature.
+
+On Babel, [optional-chaining](https://babeljs.io/docs/babel-plugin-transform-optional-chaining) is part of the ES2020 present-env. Run:
+
+```shell
+npm install @babel/preset-env --save-dev
+```
+
+Then add this to your `babel.config.js` or ``.babelrc`
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
 ## CSS styling
 
 You can style the documap using CSS.
@@ -240,13 +256,12 @@ It dispatches an `update` event when a topic is clicked. The event contains the 
 - `detail`: {Object} - contains the following properties:
   - `topicId`: {integer} - the topic index that was clicked
   - `activeTopics`: {D3 join} - the D3 join of the active topics
-  - `markers`: {D3 join} - the D3 join of the markers added to the documents
+  - `marker`: {D3 join} - the D3 join of the markers displayed (if any topics are active)
 
 ## Release notes
 
-<!--
-- 1.0.0: 31 Oct 2023. Initial release
--->
+- 1.0.1: 17 Oct 2023. Use `chart.marker` instead of `chart.markers` for consistency. Add docs.
+- 1.0.0: 16 Oct 2023. Initial release
 
 ## Authors
 

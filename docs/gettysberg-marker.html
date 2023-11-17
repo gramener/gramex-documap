@@ -13,9 +13,10 @@
     ...data,
     docWidth: (d) => d.length,
     topicLabel: (d) => d.name,
-    toggleStyle: (toggle) => toggle.style("fill", ([, topicId]) => color(topicId)),
+    // Color the markers with the topic color
+    markerStyle: (toggle) => toggle.style("fill", ([, topicId]) => color(topicId)),
   });
-  // Style the topics. Highlight topics with 3+ matches
+  // Color topics with the topic color
   chart.topic
     .style("background-color", (topic, topicId) => color(topicId));
 </script>
