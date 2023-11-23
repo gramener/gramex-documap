@@ -2,6 +2,7 @@
   "name": "@gramex/documap",
   "version": "1.0.1",
   "description": "A visual topic map of documents",
+  "type": "module",
   "module": "dist/documap.js",
   "browser": "dist/documap.min.js",
   "scripts": {

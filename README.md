@@ -189,7 +189,7 @@ You can use [Bootstrap tooltips](https://getbootstrap.com/docs/5.3/components/to
 1. Add a `data-bs-marker="tooltip" title="..."` attribute to each feature using `update`
 2. Call `new bootstrap.Tooltip(element, {selector: '[data-bs-marker="tooltip"]'})` to initialize tooltips
 
-[![Gettysberg documap with tooltips](https://code.gramener.com/cto/gramex-network/-/raw/main/docs/gettysberg-tooltip.png)](docs/gettysberg-tooltip.html ":include height=120")
+[![Gettysberg documap with tooltips](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-tooltip.png)](docs/gettysberg-tooltip.html ":include height=120")
 
 [See how to add tooltips](docs/gettysberg-tooltip.html ":include :type=code")
 
@@ -200,7 +200,7 @@ You can use [Bootstrap modals](https://getbootstrap.com/docs/5.3/components/moda
 1. Create a new `new bootstrap.Modal(document.querySelector("..."));`
 2. Use `chart.doc.on()` or `chart.topic.on()` or `chart.marker.on()` to listen to `click` events and update the modal content.
 
-[![Gettysberg documap with modals](https://code.gramener.com/cto/gramex-network/-/raw/main/docs/gettysberg-modal.png)](docs/gettysberg-modal.html ":include height=400")
+[![Gettysberg documap with modals](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-modal.png)](docs/gettysberg-modal.html ":include height=400")
 
 [See how to add modals](docs/gettysberg-modal.html ":include :type=code")
 
@@ -208,11 +208,26 @@ You can use [Bootstrap modals](https://getbootstrap.com/docs/5.3/components/moda
 
 If you already have D3 loaded, or want to use a specific version / instance of D3, pass it to `documap(el, { d3 })`:
 
-[![Gettysberg documap with pinned D3 version](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-d3.png)](docs/gettysberg-d3.html ":include height=120")
+[![Gettysberg documap with pinned D3 version](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg-d3.html ":include height=120")
 
 [See how to use your own D3 version](docs/gettysberg-d3.html ":include :type=code")
 
 ## React usage
+
+Use the following pattern when using documap with React:
+
+```js
+  const { useEffect } = React;
+  function App() {
+    useEffect(() => documap(d3.select("#documap"), { ... }), []);
+    return React.createElement("div", { id: "documap" });
+  }
+  ReactDOM.render(React.createElement(React.StrictMode, null, React.createElement(App)), document.body);
+```
+
+[![Gettysberg documap with React](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg-react.html ":include height=120")
+
+[See how to use documap with React](docs/gettysberg-react.html ":include :type=code")
 
 ## API
 

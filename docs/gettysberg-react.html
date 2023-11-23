@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="gettysberg.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/react/umd/react.development.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.development.js"></script>
+<script type="module">
+  /* globals React, ReactDOM */
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+  import { documap } from "../dist/documap.js";
+  const { useEffect } = React;
+  // Load the data
+  const data = await fetch("gettysberg.json").then((r) => r.json());
+
+  function App() {
+    useEffect(() => {
+      documap(d3.select("#documap"), {
+        ...data,
+        docWidth: (d) => d.length,
+        topicLabel: (d) => d.name,
+      });
+    }, []);
+
+    return React.createElement("div", { id: "documap" });
+  }
+  ReactDOM.render(React.createElement(React.StrictMode, null, React.createElement(App)), document.body);
+</script>
