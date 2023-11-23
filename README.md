@@ -229,6 +229,28 @@ Use the following pattern when using documap with React:
 
 [See how to use documap with React](docs/gettysberg-react.html ":include :type=code")
 
+Here are instructions to create a React Component:
+
+```shell
+npx create-react-app documap-react
+cd documap-react
+npm install d3 @gramex/documap
+curl https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.json -o public/gettysberg.json
+curl https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.css -o src/gettysberg.css
+```
+
+Create `src/DocumapComponent.js` with this code:
+
+[See DocumapComponent.js code](docs/documap-react/src/DocumapComponent.js ":include :type=code")
+
+Modify `src/App.js` as follows:
+
+[See App.js code](docs/documap-react/src/App.js ":include :type=code")
+
+Then run `npm start` or `npm run build`.
+
+[Explore the code](https://code.gramener.com/cto/gramex-documap/-/tree/main/docs/documap-react ":ignore").
+
 ## API
 
 The `documap()` function creates a document map. It accepts the following parameters:

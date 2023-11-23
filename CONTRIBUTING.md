@@ -14,3 +14,8 @@ npm version minor
 npm publish
 git push --follow-tags
 ```
+
+<!--
+npm version prerelease --preid alpha
+npm publish --tag alpha
+-->
