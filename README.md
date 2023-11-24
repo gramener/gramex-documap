@@ -217,12 +217,13 @@ If you already have D3 loaded, or want to use a specific version / instance of D
 Use the following pattern when using documap with React:
 
 ```js
-  const { useEffect } = React;
-  function App() {
-    useEffect(() => documap(d3.select("#documap"), { ... }), []);
-    return React.createElement("div", { id: "documap" });
-  }
-  ReactDOM.render(React.createElement(React.StrictMode, null, React.createElement(App)), document.body);
+const { useEffect } = React;
+function App() {
+  useEffect(() => documap(d3.select("#documap"), { ... }), []);
+  return React.createElement("div", { id: "documap" });
+}
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
 ```
 
 [![Gettysberg documap with React](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg-react.html ":include height=120")
@@ -235,8 +236,6 @@ Here are instructions to create a React Component:
 npx create-react-app documap-react
 cd documap-react
 npm install d3 @gramex/documap
-curl https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.json -o public/gettysberg.json
-curl https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.css -o src/gettysberg.css
 ```
 
 Create `src/DocumapComponent.js` with this code:

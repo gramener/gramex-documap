@@ -7,7 +7,7 @@ const DocumapComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("https://gramener.com/gramex-documap/docs/gettysberg.jsongettysberg.json");
+      const result = await fetch("https://gramener.com/gramex-documap/docs/gettysberg.json");
       const json = await result.json();
       setData(json);
     };
