@@ -1,5 +1,33 @@
 import { layer } from "@gramex/chartbase";
 
+/**
+ * Creates a document map on the specified element with the given parameters
+ *
+ * @param {string|HTMLElement|d3.selection} el - A string selector, HTML element, or D3 selection.
+ * @param {Object} params - Configuration options.
+ * @param {Array} params.docs - Document elements to be rendered.
+ * @param {string|Function} [params.docsTag="div"] - Tag name for the documents container.
+ * @param {string|Function} [params.docsClass="documap-docs"] - Class name for the documents container.
+ * @param {string|Function} [params.docTag="svg"] - Tag name for each document element.
+ * @param {string|Function} [params.docClass="documap-doc"] - Class name for each document element.
+ * @param {string|Function} [params.docWidth="5rem"] - Width of each document element.
+ * @param {string|Function} [params.docHeight="1rem"] - Height of each document element.
+ * @param {Array} params.topics - Topics to be mapped on the document.
+ * @param {string|Function} [params.topicsTag="div"] - Tag name for the topics container.
+ * @param {string|Function} [params.topicsClass="documap-topics"] - Class name for the topics container.
+ * @param {string|Function} [params.topicTag="a"] - Tag name for each topic element.
+ * @param {string|Function} [params.topicClass="documap-topic"] - Class name for each topic element.
+ * @param {string|Function} [params.topicActiveClass="active"] - Class name for each active topic element.
+ * @param {string|Function} [params.topicLabel=d => d] - Label for each topic element.
+ * @param {Array} params.docTopicMap - `[docIndex, topicIndex]` array mapping documents to topics.
+ * @param {string|Function} [params.markerTag="circle"] - Tag name for each marker element.
+ * @param {string|Function} [params.markerClass="documap-marker"] - Class name for each marker element.
+ * @param {string|Function} [params.markerSize="0.4rem"] - Size of each marker element.
+ * @param {Function} [params.markerStyle=() => {}] - Function called on the marker join.
+ * @param {Object} [params.d3=window.d3] - D3 instance to use.
+ * @returns {DocumapChart} - with individual D3 selections.
+ * @emits UpdateEvent
+ */
 export function documap(
   el,
   {
@@ -45,6 +73,14 @@ export function documap(
     .attr("data-documap-doc", (d, i) => i);
 
   let markerLayer = layer(docLayer, markerTag, markerClass, []);
+  /**
+   * @typedef {Object} DocumapChart
+   * @property {d3.selection} docs - D3 join of the documents container (single node).
+   * @property {d3.selection} topics - D3 join of the topics container (single node).
+   * @property {d3.selection} marker - D3 join of the markers displayed (if any topics are active).
+   * @property {d3.selection} doc - D3 join of the documents (as many nodes as `docs`).
+   * @property {d3.selection} topic - D3 join of the topics (as many nodes as `topics`).
+   */
   const chart = {
     doc: docLayer,
     topic: topicLayer,
@@ -73,7 +109,15 @@ export function documap(
         return `translate(${(i + 1) * (width / (nodes.length + 1))}, ${height / 2})`;
       })
       .call(markerStyle);
-    // Dispatch an update event
+    /** Fired when a topic is clicked
+     * @typedef {Object} UpdateEvent
+     * @property {string} type - Always `"update"`.
+     * @property {HTMLElement} target - The topic element clicked.
+     * @property {Object} detail - The event details.
+     * @property {number} detail.topicId - The topic index that was clicked.
+     * @property {d3.selection} detail.activeTopics - The D3 join of the active topics.
+     * @property {d3.selection} detail.marker - The D3 join of the markers displayed (if any topics are active).
+     */
     this.dispatchEvent(
       new CustomEvent("update", {
         bubbles: true,

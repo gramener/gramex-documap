@@ -253,50 +253,11 @@ Then run `npm start` or `npm run build`.
 
 ## API
 
-The `documap()` function creates a document map. It accepts the following parameters:
-
-- `el`: {string|HTMLElement|D3 Selection} - The selector, HTML element, or D3 selection to render the documap on.
-- `params`: {Object} - Parameters for the visualization.
-  - `docs`: {Array} - document elements to be rendered.
-  - `docsTag`: {string|Function} - tag name for the documents container. default: `div`.
-  - `docsClass`: {string|Function} - class name for the documents container. default: `documap-docs`.
-  - `docTag`: {string|Function} - tag name for each document element. default: `svg`.
-  - `docClass`: {string|Function} - class name for each document element. default: `documap-doc`.
-  - `docWidth`: {string|Function} - width of each document element. default: `5rem`.
-  - `docHeight`: {string|Function} - height of each document element. default: `1rem`.
-  - `topics`: {Array} - topics to be mapped on the document
-  - `topicsTag`: {string|Function} - tag name for the topics container. default: `div`.
-  - `topicsClass`: {string|Function} - class name for the topics container. default: `documap-topics`.
-  - `topicTag`: {string|Function} - tag name for each topic element. default: `a`.
-  - `topicClass`: {string|Function} - class name for each topic element. default: `documap-topic`.
-  - `topicActiveClass`: {string|Function} - class name for each active topic element. default: `active`.
-  - `topicLabel`: {string|Function} - label for each topic element. default: `d => d`.
-  - `docTopicMap`: {Array} - `[docIndex, topicIndex]` array mapping documents to topics
-  - `markerTag`: {string|Function} - tag name for each marker element. default: `circle`.
-  - `markerClass`: {string|Function} - class name for each marker element. default: `documap-marker`.
-  - `markerSize`: {string|Function} - size of each marker element. default: `0.4rem`.
-  - `markerStyle`: {Function} - called on the marker join. default: `() => {}`.
-  - `d3`: {Object} - d3 instance to use. default: `window.d3`.
-
-It returns an object with the following properties:
-
-- `docs`: {Selection} - D3 join of the documents container (single node)
-- `topics`: {Selection} - D3 join of the topics container (single node)
-- `marker`: {Selection} - D3 join of the markers displayed (if any topics are active)
-- `doc`: {Selection} - D3 join of the documents (as many nodes as `docs`)
-- `topic`: {Selection} - D3 join of the topics (as many nodes as `topics`)
-
-It dispatches an `update` event when a topic is clicked. The event contains the following properties:
-
-- `type`: {string} - `update`
-- `target`: {HTMLElement} - the topic clicked
-- `detail`: {Object} - contains the following properties:
-  - `topicId`: {integer} - the topic index that was clicked
-  - `activeTopics`: {D3 join} - the D3 join of the active topics
-  - `marker`: {D3 join} - the D3 join of the markers displayed (if any topics are active)
+[See API documentation](docs/api.md ":include :type=markdown")
 
 ## Release notes
 
+- 1.0.2: 23 Nov 2023. Document React usage and fix React compatibility
 - 1.0.1: 17 Oct 2023. Use `chart.marker` instead of `chart.markers` for consistency. Add docs.
 - 1.0.0: 16 Oct 2023. Initial release
 
