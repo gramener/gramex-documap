@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="gettysberg.css" />
+<div id="root"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/react/umd/react.development.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.development.js"></script>
@@ -21,5 +22,6 @@
 
     return React.createElement("div", { id: "documap" });
   }
-  ReactDOM.render(React.createElement(React.StrictMode, null, React.createElement(App)), document.body);
+  const root = ReactDOM.createRoot(document.querySelector("#root"));
+  root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
 </script>

@@ -1,5 +1,5 @@
 import DocumapComponent from "./DocumapComponent";
-import "./gettysberg.css";
+import "https://gramener.com/gramex-documap/docs/gettysberg.css";
 
 export default function App() {
   return (
