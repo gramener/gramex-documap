@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { documap } from "@gramex/documap";
 
 const DocumapComponent = () => {
   const [data, setData] = useState({});
+  const documapRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,8 +16,8 @@ const DocumapComponent = () => {
   }, []);
 
   useEffect(() => {
-    if (data.docs) {
-      documap(d3.select("#documap"), {
+    if (data.docs && documapRef.current) {
+      documap(d3.select(documapRef.current), {
         docs: data.docs,
         topics: data.topics,
         docTopicMap: data.docTopicMap,
@@ -26,7 +27,7 @@ const DocumapComponent = () => {
     }
   }, [data]);
 
-  return <div id="documap" />;
+  return <div ref={documapRef} />;
 };
 
 export default DocumapComponent;

@@ -238,6 +238,12 @@ cd documap-react
 npm install d3 @gramex/documap
 ```
 
+In `public/index.html`, add the line:
+
+```html
+<link rel="stylesheet" href="https://gramener.com/gramex-documap/docs/gettysberg.css" />
+```
+
 Create `src/DocumapComponent.js` with this code:
 
 [See DocumapComponent.js code](docs/documap-react/src/DocumapComponent.js ":include :type=code")
