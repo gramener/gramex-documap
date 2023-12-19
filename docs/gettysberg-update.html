@@ -8,17 +8,12 @@
   // Load the data
   const { docs, topics, docTopicMap } = await fetch("gettysberg.json").then((r) => r.json());
   // Render the documap
-  documap(d3.select("#documap"), {
+  const chart = documap(d3.select("#documap"), {
     docs,
     topics,
     docTopicMap,
     docWidth: (d) => d.length,
     topicLabel: (d) => d.name,
   });
-  document.querySelector("#documap").addEventListener("click", (e) => {
-    if (e.target.matches(".documap-topic")) {
-      e.target.style.fontStyle = 'italic';
-      document.querySelector("#data").textContent = `Last clicked: ${topics[e.target.dataset.documapTopic].name}`;
-    }
-  })
+  chart.update({ topics: (d) => ["Ideals", "Purpose"].includes(d.name) })
 </script>

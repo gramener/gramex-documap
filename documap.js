@@ -89,8 +89,13 @@ export function documap(
     topics: topicsLayer,
   };
 
-  topicLayer.on("click.update", function (event, topic) {
+  topicLayer.on("click.update", function () {
     this.classList.toggle(topicActiveClass);
+    chart.update();
+  });
+
+  chart.update = function ({ topics: activateTopics } = {}) {
+    topicLayer.classed("active", activateTopics);
     const activeTopics = topicsLayer
       .selectAll(".active")
       .data()
@@ -109,28 +114,7 @@ export function documap(
         return `translate(${(i + 1) * (width / (nodes.length + 1))}, ${height / 2})`;
       })
       .call(markerStyle);
-    /** Fired when a topic is clicked
-     * @typedef {Object} UpdateEvent
-     * @property {string} type - Always `"update"`.
-     * @property {HTMLElement} target - The topic element clicked.
-     * @property {Object} detail - The event details.
-     * @property {number} detail.topicId - The topic index that was clicked.
-     * @property {d3.selection} detail.activeTopics - The D3 join of the active topics.
-     * @property {d3.selection} detail.marker - The D3 join of the markers displayed (if any topics are active).
-     */
-    this.dispatchEvent(
-      new CustomEvent("update", {
-        bubbles: true,
-        cancelable: true,
-        detail: {
-          topic,
-          topicId: +this.dataset.documapTopic,
-          activeTopics: activeTopics,
-          marker: markerLayer,
-        },
-      }),
-    );
-  });
+  };
 
   return chart;
 }

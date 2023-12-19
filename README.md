@@ -65,7 +65,7 @@ Use via CDN as an ES Module:
 
 ```html
 <script type="module">
-  import { documap } from "https://cdn.jsdelivr.net/npm/@gramex/documap@1";
+  import { documap } from "https://cdn.jsdelivr.net/npm/@gramex/documap@2";
   const chart = documap(...);
 </script>
 ```
@@ -73,7 +73,7 @@ Use via CDN as an ES Module:
 Use via CDN as a script:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@gramex/documap@1/dist/documap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@gramex/documap@2/dist/documap.min.js"></script>
 <script>
   const chart = gramex.documap(...);
 </script>
@@ -167,16 +167,25 @@ You can use [events](#events) as another way of styling markers.
 
 [See how to style markers](docs/gettysberg-marker.html ":include :type=code")
 
+## Update topics
+
+To activate / deactivate topics, use `.update({ topics })`. For example, this activates the "Ideals" and "Purpose" topics.
+
+```js
+chart.update({ topics: (d) => ["Ideals", "Purpose"].includes(d.name) });
+```
+
+Else, you can manually update each topic's `active` class and call `chart.update()`.
+
+[![Gettysberg documap update topics](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-update.png)](docs/gettysberg-update.html ":include height=120")
+
+[See how to update topics](docs/gettysberg-update.html ":include :type=code")
+
 ## Events
 
-After a topic is clicked and markers are added, it fires a cancelable bubbling `update` event on the clicked element. The event has:
+You can listen to the `click` event fired on topics to process clicks - using regular JavaScript.
 
-- `type`: {string} - `update`
-- `target`: {HTMLElement} - the topic clicked
-- `detail`: {Object} - contains the following properties:
-  - `topicId`: {integer} - the topic index that was clicked
-  - `activeTopics`: {D3 join} - the D3 join of the active topics
-  - `markers`: {D3 join} - the D3 join of the markers added to the documents
+Click on the topics below to see the clicked topic's details displayed.
 
 [![Gettysberg documap event handler](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-event.png)](docs/gettysberg-event.html ":include height=120")
 
@@ -262,6 +271,10 @@ Then run `npm start` or `npm run build`.
 
 ## Release notes
 
+- 2.0.0: 19 Dec 2023.
+  - `chart.update()` draws all markers based on active topics
+  - Backward incompatible changes:
+    - `update` event removed. The `click` event provides sufficient information.
 - 1.0.2: 23 Nov 2023. Document React usage and fix React compatibility
 - 1.0.1: 17 Oct 2023. Use `chart.marker` instead of `chart.markers` for consistency. Add docs.
 - 1.0.0: 16 Oct 2023. Initial release
