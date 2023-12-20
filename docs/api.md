@@ -44,26 +44,9 @@ Type: [Object][3]
 - `doc` **d3.selection** D3 join of the documents (as many nodes as `docs`).
 - `topic` **d3.selection** D3 join of the topics (as many nodes as `topics`).
 
-## UpdateEvent
-
-Fired when a topic is clicked
-
-Type: [Object][3]
-
-### Properties
-
-- `type` **[string][1]** Always `"update"`.
-- `target` **[HTMLElement][2]** The topic element clicked.
-- `detail` **[Object][3]** The event details.
-
-  - `detail.topicId` **[number][7]** The topic index that was clicked.
-  - `detail.activeTopics` **d3.selection** The D3 join of the active topics.
-  - `detail.marker` **d3.selection** The D3 join of the markers displayed (if any topics are active).
-
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 [2]: https://developer.mozilla.org/docs/Web/HTML/Element
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 [5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 [6]: #documapchart
-[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
