@@ -95,7 +95,7 @@ export function documap(
   });
 
   chart.update = function ({ topics: activateTopics } = {}) {
-    topicLayer.classed("active", activateTopics);
+    if (activateTopics) topicLayer.classed("active", activateTopics);
     const activeTopics = topicsLayer
       .selectAll(".active")
       .data()
