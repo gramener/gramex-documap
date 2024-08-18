@@ -1,6 +1,6 @@
 {
   "name": "@gramex/documap",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A visual topic map of documents",
   "main": "dist/documap.min.js",
   "module": "dist/documap.js",

@@ -271,6 +271,7 @@ Then run `npm start` or `npm run build`.
 
 ## Release notes
 
+- 2.0.1: 18 Auf 2024. Fix: `chart.update()` resets topics ONLY if provided
 - 2.0.0: 19 Dec 2023.
   - `chart.update()` draws all markers based on active topics
   - Backward incompatible changes:
