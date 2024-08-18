@@ -31,7 +31,7 @@ Given this [document and topics list from the Gettysberg address](docs/gettysber
 
 ... we can render the following documap. (Click on the topics - "Ideals", "Purpose", etc. - to highlight matching documents.)
 
-[![Gettysberg documap](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg.html ":include height=120")
+[![Gettysberg documap](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg.png)](docs/gettysberg.html ":include height=120")
 
 [Here is the source code for the network above](docs/gettysberg.html ":include :type=code")
 
@@ -149,7 +149,7 @@ When a topic is clicked, it adds marker elements to matching documents.
 - `chart.doc.attr(doc => ...).style(...)` colors and resizes the documents
 - `chart.topic.text(topic => ...).style(...)` colors and re-labels the topics
 
-[![Gettysberg documap with styled docs and topics](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-style.png)](docs/gettysberg-style.html ":include height=120")
+[![Gettysberg documap with styled docs and topics](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-style.png)](docs/gettysberg-style.html ":include height=120")
 
 [See how to style docs and topics](docs/gettysberg-style.html ":include :type=code")
 
@@ -163,7 +163,7 @@ When a topic is clicked, it adds marker elements to matching documents.
 Note: You can't style the markers using the `chart.marker` D3 join because it is empty when the chart is initialized, and is updated dynamically. So we pass a `markerStyle` function instead.
 You can use [events](#events) as another way of styling markers.
 
-[![Gettysberg documap styled markers](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-marker.png)](docs/gettysberg-marker.html ":include height=120")
+[![Gettysberg documap styled markers](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-marker.png)](docs/gettysberg-marker.html ":include height=120")
 
 [See how to style markers](docs/gettysberg-marker.html ":include :type=code")
 
@@ -177,7 +177,7 @@ chart.update({ topics: (d) => ["Ideals", "Purpose"].includes(d.name) });
 
 Else, you can manually update each topic's `active` class and call `chart.update()`.
 
-[![Gettysberg documap update topics](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-update.png)](docs/gettysberg-update.html ":include height=120")
+[![Gettysberg documap update topics](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-update.png)](docs/gettysberg-update.html ":include height=120")
 
 [See how to update topics](docs/gettysberg-update.html ":include :type=code")
 
@@ -187,7 +187,7 @@ You can listen to the `click` event fired on topics to process clicks - using re
 
 Click on the topics below to see the clicked topic's details displayed.
 
-[![Gettysberg documap event handler](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-event.png)](docs/gettysberg-event.html ":include height=120")
+[![Gettysberg documap event handler](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-event.png)](docs/gettysberg-event.html ":include height=120")
 
 [See how to listen to events](docs/gettysberg-event.html ":include :type=code")
 
@@ -198,7 +198,7 @@ You can use [Bootstrap tooltips](https://getbootstrap.com/docs/5.3/components/to
 1. Add a `data-bs-marker="tooltip" title="..."` attribute to each feature using `update`
 2. Call `new bootstrap.Tooltip(element, {selector: '[data-bs-marker="tooltip"]'})` to initialize tooltips
 
-[![Gettysberg documap with tooltips](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-tooltip.png)](docs/gettysberg-tooltip.html ":include height=120")
+[![Gettysberg documap with tooltips](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-tooltip.png)](docs/gettysberg-tooltip.html ":include height=120")
 
 [See how to add tooltips](docs/gettysberg-tooltip.html ":include :type=code")
 
@@ -209,7 +209,7 @@ You can use [Bootstrap modals](https://getbootstrap.com/docs/5.3/components/moda
 1. Create a new `new bootstrap.Modal(document.querySelector("..."));`
 2. Use `chart.doc.on()` or `chart.topic.on()` or `chart.marker.on()` to listen to `click` events and update the modal content.
 
-[![Gettysberg documap with modals](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg-modal.png)](docs/gettysberg-modal.html ":include height=400")
+[![Gettysberg documap with modals](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg-modal.png)](docs/gettysberg-modal.html ":include height=400")
 
 [See how to add modals](docs/gettysberg-modal.html ":include :type=code")
 
@@ -217,7 +217,7 @@ You can use [Bootstrap modals](https://getbootstrap.com/docs/5.3/components/moda
 
 If you already have D3 loaded, or want to use a specific version / instance of D3, pass it to `documap(el, { d3 })`:
 
-[![Gettysberg documap with pinned D3 version](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg-d3.html ":include height=120")
+[![Gettysberg documap with pinned D3 version](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg.png)](docs/gettysberg-d3.html ":include height=120")
 
 [See how to use your own D3 version](docs/gettysberg-d3.html ":include :type=code")
 
@@ -235,7 +235,7 @@ const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
 ```
 
-[![Gettysberg documap with React](https://code.gramener.com/cto/gramex-documap/-/raw/main/docs/gettysberg.png)](docs/gettysberg-react.html ":include height=120")
+[![Gettysberg documap with React](https://raw.githubusercontent.com/gramener/gramex-documap/main/docs/gettysberg.png)](docs/gettysberg-react.html ":include height=120")
 
 [See how to use documap with React](docs/gettysberg-react.html ":include :type=code")
 
@@ -263,7 +263,7 @@ Modify `src/App.js` as follows:
 
 Then run `npm start` or `npm run build`.
 
-[Explore the code](https://code.gramener.com/cto/gramex-documap/-/tree/main/docs/documap-react ":ignore").
+[Explore the code](https://github.com/gramener/gramex-documap/tree/main/docs/documap-react ":ignore").
 
 ## API
 

@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://code.gramener.com/cto/gramex-documap"
+    "url": "git@github.com:gramener/gramex-documap"
   },
   "keywords": [
     "gramex",
@@ -36,13 +36,13 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://code.gramener.com/cto/gramex-documap/-/issues"
+    "url": "https://github.com/gramener/gramex-documap/issues"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://gramener.com/gramex-documap/",
+  "homepage": "https://gramener.github.io/gramex-documap/",
   "prettier": {
     "printWidth": 120
   },
@@ -68,8 +68,7 @@
     "eslint": "^8.48.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.0.3"
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "dependencies": {
     "@gramex/chartbase": "^1.0.0"
